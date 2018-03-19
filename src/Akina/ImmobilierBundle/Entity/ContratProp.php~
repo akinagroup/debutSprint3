@@ -1,0 +1,232 @@
+<?php
+
+namespace Akina\ImmobilierBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContratProp
+ *
+ * @ORM\Table(name="contrat_prop")
+ * @ORM\Entity(repositoryClass="Akina\ImmobilierBundle\Repository\ContratPropRepository")
+ */
+class ContratProp
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DateDeDebut", type="string", length=255)
+     */
+    private $dateDeDebut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DateDeFin", type="string", length=255)
+     */
+    private $dateDeFin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Durée", type="string", length=40)
+     */
+    private $durée;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="MontantAllocation", type="integer")
+     */
+    private $montantAllocation;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="CommissionAgence", type="integer")
+     */
+    private $commissionAgence;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Total", type="integer")
+     */
+    private $total;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Biens")
+     */
+    private $Bien;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Proprietaire")
+     */
+    private $proprietaire;
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateDeDebut
+     *
+     * @param string $dateDeDebut
+     *
+     * @return ContratProp
+     */
+    public function setDateDeDebut($dateDeDebut)
+    {
+        $this->dateDeDebut = $dateDeDebut;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeDebut
+     *
+     * @return string
+     */
+    public function getDateDeDebut()
+    {
+        return $this->dateDeDebut;
+    }
+
+    /**
+     * Set dateDeFin
+     *
+     * @param string $dateDeFin
+     *
+     * @return ContratProp
+     */
+    public function setDateDeFin($dateDeFin)
+    {
+        $this->dateDeFin = $dateDeFin;
+
+        return $this;
+    }
+
+    /**
+     * Get dateDeFin
+     *
+     * @return string
+     */
+    public function getDateDeFin()
+    {
+        return $this->dateDeFin;
+    }
+
+    /**
+     * Set durée
+     *
+     * @param string $durée
+     *
+     * @return ContratProp
+     */
+    public function setDurée($durée)
+    {
+        $this->durée = $durée;
+
+        return $this;
+    }
+
+    /**
+     * Get durée
+     *
+     * @return string
+     */
+    public function getDurée()
+    {
+        return $this->durée;
+    }
+
+    /**
+     * Set montantAllocation
+     *
+     * @param integer $montantAllocation
+     *
+     * @return ContratProp
+     */
+    public function setMontantAllocation($montantAllocation)
+    {
+        $this->montantAllocation = $montantAllocation;
+
+        return $this;
+    }
+
+    /**
+     * Get montantAllocation
+     *
+     * @return int
+     */
+    public function getMontantAllocation()
+    {
+        return $this->montantAllocation;
+    }
+
+    /**
+     * Set commissionAgence
+     *
+     * @param integer $commissionAgence
+     *
+     * @return ContratProp
+     */
+    public function setCommissionAgence($commissionAgence)
+    {
+        $this->commissionAgence = $commissionAgence;
+
+        return $this;
+    }
+
+    /**
+     * Get commissionAgence
+     *
+     * @return int
+     */
+    public function getCommissionAgence()
+    {
+        return $this->commissionAgence;
+    }
+
+    /**
+     * Set total
+     *
+     * @param integer $total
+     *
+     * @return ContratProp
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return int
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+}
+

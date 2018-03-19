@@ -1,0 +1,53 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+
+
+{% block upload %}
+<div class="container">
+<h3>
+Liste des confessions non validées </h3>
+
+ <div class="table-responsive ">
+<table class="table table-bordred table-striped table-inverse display" id="myTable">
+<thead>
+<tr>
+    <th>N° </th>
+<th>Nom Bien</th>
+<th>Localite</th>
+<th>Type</th>
+<th>Proprietaire</th>
+<th>Détails</th>
+<th>Valid</th>
+
+</tr>
+</thead>
+<tbody>
+{%for bien in reservations%}
+<tr>
+<td>
+
+</td>
+
+<td>{{bien.bien.nomBien}}</td>
+
+
+<td>{{bien.bien.Localite.libelle }}</td>
+<td>{{bien.bien.Type.libelle}}</td>
+
+<td>{{bien.bien.Proprietaire.nom}}  {{bien.bien.Proprietaire.Prenom}}</td>
+<td><a href="{{path('detailBien',{'id':bien.id})}}">Détails</a></td>
+<td><a href="{{path('contratProprietaire',{'id':bien.id,'bien':bien.Bien.id,'proprio':bien.bien.Proprietaire.id})}}">
+
+Valider
+
+</a></td>
+</tr>
+
+{%else%}
+
+{%endfor%}
+</tbody>
+</table>
+</div>
+
+</div>
+{% endblock %}

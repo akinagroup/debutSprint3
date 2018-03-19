@@ -1,0 +1,69 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+ {% block form %}
+
+ <h1 class="my-4 list-group-item">Recherche de bien</h1>
+<div class="form-group list-group-item">
+
+
+</div>
+  {% endblock %}
+{% block upload %}
+
+ <div id="bien">
+<h3>
+Liste des reservations
+</h3>
+ <div class="container">
+
+
+ <div class="table-responsive ">
+<table class="table datatable table-bordred table-striped table-inverse display" id="example">
+<thead>
+<tr>
+    <th>N° </th>
+<th>Nom client</th>
+
+
+<th>Date de reservation</th>
+<th>Nom du bien</th>
+<th>Localite</th>
+<th>Proprietaire</th>
+<th>Détails</th>
+<th>Valider</th>
+</tr>
+</thead>
+<tbody>
+{% for reserve in reservations %}
+<tr>
+<td>
+
+
+</td>
+
+<td>{{reserve.Client.Prenom}} {{reserve.Client.Nom}}</td>
+
+<td>{{reserve.dateDeReservation}}</td>
+
+
+<td>{{reserve.Bien}}</td>
+<td>{{reserve.Bien}}</td>
+
+<td>{{reserve.Bien}} {{reserve.Bien}}</td>
+<td><a  href="{{path('detail',{'id':reserve.id})}}">Détails</a></td>
+
+<td><a href="{{path('contrat',{'id':reserve.id,'bien':reserve.Bien.id})}}">
+
+Valider
+
+</a></td>
+</tr>
+
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+</div>
+ </div>
+
+{% endblock %}

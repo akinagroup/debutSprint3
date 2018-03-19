@@ -1,0 +1,28 @@
+{% extends "::Layout/layout1.html.twig" %}
+
+   {% block catalogue %}
+  
+ {%for bien in reservations%}
+         <li class="span4">
+			  <div class="thumbnail">
+				 
+				<a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> Détails </a>
+				<a href="product_details.html"><img src="" alt=""></a>
+				<div class="caption cntr">
+					<p> {{bien.NomBien}} </p>
+					<p><strong> {{bien.Prix}} Fcfa</strong></p>
+					<h4><a class="shopBtn" href="{{path('Reserve',{'id':bien.id})}}" title="add to cart"> Réserver </a></h4>
+					<div class="actionList">
+						<a class="pull-left" href="#">{{bien.Type.Libelle}} </a> 
+						<a class="pull-left" href="#">  {{bien.Localite.Libelle}}</a>
+					</div> 
+					<br class="clr">
+				</div>
+			  </div>
+			</li>
+
+   {%endfor%}
+ 
+   
+          <!-- /.row -->
+           {% endblock %}

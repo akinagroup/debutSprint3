@@ -1,0 +1,256 @@
+<?php
+
+namespace Akina\ImmobilierBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Biens
+ *
+ * @ORM\Table(name="biens")
+ * @ORM\Entity(repositoryClass="Akina\ImmobilierBundle\Repository\BiensRepository")
+ */
+class Biens
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NomBien", type="string", length=30)
+     */
+    private $nomBien;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="Etat", type="boolean")
+     */
+    private $etat;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="Prix", type="integer", length=30)
+     */
+    private $prix;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text")
+     */
+    private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Biens")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $bienParent;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Proprietaire")
+     */
+  private $Proprietaire;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Image")
+     */
+  private $Image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\TypeBien")
+     */
+  private $Type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Localite")
+     */
+  private $Localite;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomBien
+     *
+     * @param string $nomBien
+     *
+     * @return Biens
+     */
+    public function setNomBien($nomBien)
+    {
+        $this->nomBien = $nomBien;
+
+        return $this;
+    }
+
+    /**
+     * Get nomBien
+     *
+     * @return string
+     */
+    public function getNomBien()
+    {
+        return $this->nomBien;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Biens
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return bool
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+    /**
+     * Set Prix
+     *
+     * @param string $prix
+     *
+     * @return Biens
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Biens
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set propritaire
+     *
+     * @param \Akina\ImmobilierBundle\Entity\Proprietaire $propritaire
+     *
+     * @return Biens
+     */
+    public function setPropritaire(\Akina\ImmobilierBundle\Entity\Proprietaire $propritaire = null)
+    {
+        $this->Propritaire = $propritaire;
+
+        return $this;
+    }
+
+    /**
+     * Get propritaire
+     *
+     * @return \Akina\ImmobilierBundle\Entity\Proprietaire
+     */
+    public function getPropritaire()
+    {
+        return $this->Propritaire;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Akina\ImmobilierBundle\Entity\TypeBien $type
+     *
+     * @return Biens
+     */
+    public function setType(\Akina\ImmobilierBundle\Entity\TypeBien $type = null)
+    {
+        $this->Type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Akina\ImmobilierBundle\Entity\TypeBien
+     */
+    public function getType()
+    {
+        return $this->Type;
+    }
+
+    /**
+     * Set localite
+     *
+     * @param \SNT\ImmobilierBundle\Entity\Localite $localite
+     *
+     * @return Biens
+     */
+    public function setLocalite(\SNT\ImmobilierBundle\Entity\Localite $localite = null)
+    {
+        $this->Localite = $localite;
+
+        return $this;
+    }
+
+    /**
+     * Get localite
+     *
+     * @return \SNT\ImmobilierBundle\Entity\Localite
+     */
+    public function getLocalite()
+    {
+        return $this->Localite;
+    }
+    
+}

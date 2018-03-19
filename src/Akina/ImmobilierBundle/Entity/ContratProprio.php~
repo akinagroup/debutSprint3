@@ -1,0 +1,76 @@
+<?php
+
+namespace Akina\ImmobilierBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContratProprio
+ *
+ * @ORM\Table(name="contrat_proprio")
+ * @ORM\Entity(repositoryClass="Akina\ImmobilierBundle\Repository\ContratProprioRepository")
+ */
+class ContratProprio
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Duree", type="string", length=255)
+     */
+    private $duree;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Biens")
+     */
+    private $Bien;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Proprietaire")
+     */
+    private $proprietaire;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set duree
+     *
+     * @param string $duree
+     *
+     * @return ContratProprio
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get duree
+     *
+     * @return string
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+}
+

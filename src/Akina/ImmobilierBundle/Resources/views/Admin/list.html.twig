@@ -1,0 +1,78 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+
+
+{% block upload %}
+<div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-header">
+                        <strong>Basic Form</strong> Elements
+                      </div>
+                      <div class="card-body card-block">
+                        
+                      </div>
+                      <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                          <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                          <i class="fa fa-ban"></i> Reset
+                        </button>
+                      </div>
+                    </div>
+                    </div>
+
+ <div class="container">
+<h3>
+Liste des biens
+</h3>
+
+ <div class="table-responsive ">
+<table class="table table-bordred table-striped table-inverse display" id="myTable">
+<thead>
+<tr>
+    <th>N° </th>
+<th>Nom Bien</th>
+<th>Etat</th>
+
+<th>Localite</th>
+<th>Type</th>
+<th>Proprietaire</th>
+<th>Détails</th>
+</tr>
+</thead>
+<tbody>
+{%for bien in reservations%}
+<tr>
+<td>
+
+</td>
+
+<td>{{bien.nomBien}}</td>
+<td><a href="{{path('disponibilite',{'id':bien.id})}}">
+{%if bien.etat == 1%}
+Occupé
+{% else %}
+Disponible
+{% endif%}
+</a></td>
+
+
+<td>{{bien.Localite.libelle }}</td>
+<td>{{bien.Type.libelle}}</td>
+
+<td>{{bien.Proprietaire.numeroPiece}}</td>
+<td><a href="{{path('detailBien',{'id':bien.id})}}">Détails</a></td>
+<td></td>
+</tr>
+
+{%else%}
+
+{%endfor%}
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+{% endblock %}

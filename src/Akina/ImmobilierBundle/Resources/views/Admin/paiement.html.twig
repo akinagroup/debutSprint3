@@ -1,0 +1,65 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+
+{% block upload %}
+<!-- Responsive extension -->
+
+        <script
+			  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+			  crossorigin="anonymous"></script>
+
+
+<h3>
+Liste des reservations
+</h3>
+ <div class="container">
+
+
+ <div class="table-responsive " id="example">
+<table class="table datatable table-bordred table-striped table-inverse display" >
+<thead>
+<tr>
+    <th>N° </th>
+<th >Nom du client</th>
+<th>Montant total payer</th>
+
+<th>Durée</th>
+<th>Nom du bien</th>
+<th>Localite</th>
+<th>Proprietaire</th>
+<th>Détails</th>
+</tr>
+</thead>
+<tbody>
+{%for reserve in reservations%}
+<tr>
+<td>
+
+
+</td>
+
+<td>{{reserve.Contrat.client.Prenom}} {{reserve.Contrat.client.Nom}}</td>
+
+<td>{{reserve.montantPayer}}</td>
+<td>{{reserve.duree}}</td>
+
+<td>{{reserve.Contrat.Bien.nomBien }}</td>
+<td>{{reserve.Contrat.Bien.Localite.Libelle}}</td>
+
+<td>{{reserve.Contrat.Bien.Proprietaire.Prenom}} {{reserve.Contrat.Bien.Proprietaire.Nom}}</td>
+<td><a href="#" >Détails</a></td>
+<td></td>
+</tr>
+
+{%else%}
+<td colspan="6">Aucun utilisateur</td>
+
+{%endfor%}
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+
+
+  {% block upload %}
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+  <style>
+
+.tabu {
+
+    border-radius:3px;
+
+    height:400px;
+
+
+}
+span{
+
+
+}
+#lirelasuite {display:none;}
+
+
+</style>
+<h3>
+Voir les détails sur :
+</h3>
+
+
+    {% for reserve in detail %}
+
+
+<div class="">
+              <div class="card ">
+                <div class="card-body">
+                <table class="table table-bordred table-striped table-inverse display">
+
+    <tr><td><strong>Nom du bien    </strong></td><td><span>{{reserve.Bien.nomBien }}        </span>     </td></tr>
+    <tr><td><strong>Description    </strong></td><td><p><p id="lirelasuite">{{reserve.Bien.description }} </p> <a href="#nogo" onclick="document.getElementById('lirelasuite').style.display = 'block'; this.style.display = 'none';">Lire la suite...</a></p>
+      </td></tr>
+    <tr><td><strong>Prix           </strong></td><td><span>{{reserve.Bien.prix }}              </span>  </td></tr>
+
+   <tr><td><strong>Localite        </strong></td><td><span>{{reserve.Bien.Localite.libelle }} </span>   </td></tr>
+   <tr><td> <strong>Type           </strong></td><td><span> {{reserve.Bien.Type.libelle }}     </span>   </td></tr>
+
+  </table>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+            </div>
+
+              <div class="card h-100">
+               <div class="card-body">
+                 <table class="table table-bordred table-striped table-inverse display">
+  <tr><td><strong>Nom du propriétaire</strong></td><td><span>{{reserve.Bien.Proprietaire.Prenom}} {{reserve.Bien.Proprietaire.Nom}}     </span>    </td></tr>
+    <tr><td><strong>Numéro CNI       </strong></td><td><span>{{reserve.Bien.Proprietaire.numeroPiece}} </span> </td></tr>
+    <tr><td><strong>Addresse         </strong></td><td><span>{{reserve.Bien.Proprietaire.Addresse}}   </span>    </td></tr>
+    <tr><td><strong>Email            </strong></td><td><span>{{reserve.Bien.Proprietaire.email}}   </span></td></tr>
+    </table>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+
+
+
+            <div class="card h-100">
+                <div class="card-body">
+                 <table class="table table-bordred table-striped table-inverse display">
+    <tr><td><strong>Nom du client    </strong></td><td><span>{{reserve.Client.Prenom}} {{reserve.Client.Nom}}</span>  </td></tr>
+   <tr><td><strong>Numéro CNI        </strong></td><td><span>{{reserve.Client.numeroPiece}}</span> </td></tr>
+    <tr><td><strong>Addresse         </strong></td><td><span>{{reserve.Client.Addresse}}    </span>  </td></tr>
+    <tr><td><strong>Email            </strong></td><td><span>{{reserve.Client.email}}   </span></td></tr>
+       <tr><td><strong>Téléphone         </strong></td><td><span>{{reserve.Client.telephone}}   </span></td></tr>
+</table>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+            </div>
+
+
+
+ {% endfor %}
+
+  </div>
+</div>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}

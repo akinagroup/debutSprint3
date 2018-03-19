@@ -1,0 +1,131 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+  {% block upload %}
+  <style>
+  .btn{
+      float:right;
+  }
+  </style>
+<div class="form-group list-group-item" style="padding-bottom:30px">
+
+<h1>Contrat</h1>
+
+<h2>Infos client</h2>
+ {% for reserve in reservation %}
+            <div class="form-group">
+  <table class="table table-bordred table-striped table-inverse display">
+    <tr><td><strong>Nom du client    </strong></td><td>{{reserve.Client.Prenom}} {{reserve.Client.Nom}}
+ </td></tr>
+   <tr><td><strong>Numéro CNI        </strong></td><td>{{reserve.Client.numeroPiece}}
+ </td></tr>
+    <tr><td><strong>Addresse         </strong></td><td>{{reserve.Client.Addresse}}
+ </td></tr>
+    <tr><td><strong>Email            </strong></td><td>{{reserve.Client.email}}
+ </td></tr>
+       <tr><td><strong>Téléphone         </strong></td><td>{{reserve.Client.telephone}}
+ </td></tr>
+
+  </div>
+ <tr><td> <h2>Infos du bien</h2></td></tr>
+ <div class="form-group">
+    <tr><td><strong>Nom du bien    </strong></td><td>{{reserve.Bien.nomBien }}
+ </td></tr>
+
+    <tr><td><strong>Prix        </strong></td><td>{{reserve.Bien.prix }}
+ </td></tr>
+    <tr><td><strong>Proprietaire           </strong></td><td>{{reserve.Bien.Proprietaire.Prenom}} {{reserve.Bien.Proprietaire.Nom}} </td></tr
+    >   <tr><td><strong>Localite         </strong></td><td>{{reserve.Bien.Localite.libelle }}
+ </td></tr>
+<tr><td><strong>Type         </strong></td><td>{{reserve.Bien.Type.libelle }}
+ </td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+    La mensualité
+</strong>
+            </td> <td>
+
+
+
+
+
+      {# Génération de l'input. #}
+
+      {{reserve.Bien.prix }}
+
+
+
+ </td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+
+La caution
+</strong>
+            </td> <td>
+
+
+ {{reserve.Bien.prix }}
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+
+La totale
+</strong>
+            </td> <td>
+
+
+ {{reserve.Bien.prix + reserve.Bien.prix}}
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+  </div>
+   {% endfor %}
+
+
+
+
+
+{{ form_start(form)}}
+           <tr><td> {# Génération du label. #}
+<strong>
+
+    <label>
+    Les termes du contrat
+    </label>
+</strong>
+            </td> <td>
+
+
+
+
+<textarea disabled="disabled" style="width:500px ; height:300px" >
+{% for termes in terme %}
+    {{ termes.texte}}
+{% endfor %}
+</textarea>
+
+
+
+
+</td></tr>
+  <tr><td> </td><td>
+  <input id="checkBox" name="checkBox" id="oui" type="radio">Accepter
+  <input id="checkBox" name="checkBox" id="non" type="radio" style="margin-left:20px;">Refuser
+  </td></tr>
+            <tr><td>
+        </td><td><input class="btn btn-dark" type="submit" id="soumet" value="Enregistrer" />
+        </td></tr>
+        {{form_end(form)}}
+
+        </table>
+        </div>
+
+  {% endblock %}

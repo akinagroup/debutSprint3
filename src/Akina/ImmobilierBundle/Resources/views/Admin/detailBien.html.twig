@@ -1,0 +1,71 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+
+
+  {% block upload %}
+
+
+  <style>
+
+
+
+</style>
+<h3>
+Voir les détails sur :
+</h3>
+
+
+    {% for reserve in detail %}
+
+
+<div class="">
+              <div class="card ">
+                <div class="card-body">
+                <table class="table table-bordred table-striped table-inverse display">
+
+    <tr><td><strong>Nom du bien    </strong></td><td><span>{{reserve.Biens.nomBien }}        </span>     </td></tr>
+    <tr><td><strong>Description    </strong></td><td><span>{{reserve.Biens.description }}        </span> </td></tr>
+    <tr><td><strong>Prix           </strong></td><td><span>{{reserve.Biens.prix }}              </span>  </td></tr>
+
+   <tr><td><strong>Localite        </strong></td><td><span>{{reserve.Biens.Localite.libelle }} </span>   </td></tr>
+   <tr><td> <strong>Type           </strong></td><td><span> {{reserve.Biens.Type.libelle }}     </span>   </td></tr>
+<tr><td> <strong>Images          </strong></td><td><img src="{{ asset('uploads/images/' ~ reserve.image) }}" height="100px" width="250px">
+   </td></tr>
+
+  </table>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+
+
+
+              <div class="card h-100">
+               <div class="card-body">
+                 <table class="table table-bordred table-striped table-inverse display">
+  <tr><td><strong>Nom du propriétaire</strong></td><td><span>{{reserve.Biens.Proprietaire.Prenom}} {{reserve.Biens.Proprietaire.Nom}}     </span>    </td></tr>
+    <tr><td><strong>Numéro CNI       </strong></td><td><span>{{reserve.Biens.Proprietaire.numeroPiece}} </span> </td></tr>
+    <tr><td><strong>Addresse         </strong></td><td><span>{{reserve.Biens.Proprietaire.Addresse}}   </span>    </td></tr>
+    <tr><td><strong>Email            </strong></td><td><span>{{reserve.Biens.Proprietaire.email}}   </span></td></tr>
+    </table>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+
+
+
+
+
+ </div>
+</div>
+ {% endfor %}
+
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}

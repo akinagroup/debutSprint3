@@ -1,0 +1,8 @@
+{% extends "::Layout/layout1.html.twig" %}
+ {% block catalogue  %}
+ <strong>Cliquer ici pour valider</strong>
+{{ form_start(form)}}
+<input class="btn btn-dark" type="submit" id="soumet" value="Valider" />
+
+        {{form_end(form)}}
+ {% endblock %}

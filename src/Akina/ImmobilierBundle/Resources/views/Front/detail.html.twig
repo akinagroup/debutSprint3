@@ -1,0 +1,88 @@
+{% extends "::Layout/layout1.html.twig" %}
+ {% block article %}
+  {% block carousel %}
+
+        {% endblock %}
+ <div class="well well-small">
+
+		  <div class="row-fluid">
+
+    {% block catalogue %}
+
+  <div class="row" >
+    <div class="span6">
+		<div id="myCarousel" class="carousel slide homCar">
+            <div class="carousel-inner">
+			 {% for reserve in detail %}
+			  <div class="item">
+                <img style="width:100%" src="{{ asset('uploads/images/' ~ reserve.image) }}" alt="bootstrap ecommerce templates">
+                <div class="carousel-caption">
+                      <h4>Bootstrap shopping cart</h4>
+                      <p><span>Very clean simple to use</span></p>
+                </div>
+              </div>
+              <div class="item">
+                <img style="width:100%" src="{{ asset('uploads/images/' ~ reserve.image) }}" alt="bootstrap ecommerce templates">
+                <div class="carousel-caption">
+                      <h4>Bootstrap shopping cart</h4>
+                      <p><span>Very clean simple to use</span></p>
+                </div>
+              </div>
+              <div class="item">
+                <img style="width:100%" src="{{ asset('uploads/images/' ~ reserve.image) }}" alt="bootstrap ecommerce templates">
+                <div class="carousel-caption">
+                      <h4>Bootstrap shopping cart</h4>
+                      <p><span>Very clean simple to use</span></p>
+                </div>
+              </div>
+              <div class="item">
+                <img style="width:100%" src="{{ asset('uploads/images/' ~ reserve.image) }}" alt="bootstrap ecommerce templates">
+                <div class="carousel-caption">
+                      <h4>Bootstrap shopping cart</h4>
+                      <p><span>Very clean simple to use</span></p>
+                </div>
+              </div>
+
+ {% endfor %}
+
+            </div>
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          </div>
+		  </div>
+		   {% for reserve in detail %}
+<div class="span6">
+
+                <table class="table">
+
+    <tr><td><strong>Nom du bien    </strong></td><td><span>{{reserve.biens.nomBien }}        </span>     </td></tr>
+    <tr><td><strong>Prix           </strong></td><td><span>{{reserve.biens.prix }}              </span>  </td></tr>
+
+   <tr><td><strong>Localite        </strong></td><td><span>{{reserve.biens.Localite.libelle }} </span>   </td></tr>
+   <tr><td> <strong>Type           </strong></td><td><span> {{reserve.biens.Type.libelle }}     </span>   </td></tr>
+ <tr><td><strong>Description    </strong></td><td><span>{{reserve.biens.description }}        </span> </td></tr>
+
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+ {% endfor %}
+</div>
+
+
+
+	{% endblock %}
+
+	</div>
+	</div>
+           {% endblock %}

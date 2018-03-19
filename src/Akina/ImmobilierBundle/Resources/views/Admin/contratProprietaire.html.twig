@@ -1,0 +1,164 @@
+{% extends "::LayoutAdmin/integration.html.twig" %}
+  {% block upload %}
+  <style>
+  .btn{
+      float:right;
+  }
+  </style>
+<div class="form-group list-group-item" style="padding-bottom:30px">
+
+<h1>Contrat avec le proprietaire</h1>
+
+<h2>Infos Proprietaire</h2>
+ {% for reserve in reservation %}
+            <div class="form-group">
+  <table class="table table-bordred table-striped table-inverse display">
+    <tr><td><strong>Nom du Proprietaire    </strong></td><td>{{reserve.bien.proprietaire.Prenom}} {{reserve.bien.proprietaire.Nom}}
+ </td></tr>
+   <tr><td><strong>Numéro CNI        </strong></td><td>{{reserve.bien.proprietaire.numeroPiece}}
+ </td></tr>
+    <tr><td><strong>Addresse         </strong></td><td>{{reserve.bien.proprietaire.Addresse}}
+ </td></tr>
+    <tr><td><strong>Email            </strong></td><td>{{reserve.bien.proprietaire.email}}
+ </td></tr>
+       <tr><td><strong>Téléphone         </strong></td><td>{{reserve.bien.proprietaire.telephone}}
+ </td></tr>
+  <tr><td><strong>Code Banquaire         </strong></td><td>{{reserve.bien.proprietaire.codeBanquaire}}
+ </td></tr>
+
+  </div>
+ <tr><td> <h2>Infos du bien</h2></td><td>
+ </td></tr>
+ <div class="form-group">
+    <tr><td><strong>Nom du bien    </strong></td><td>{{reserve.Bien.nomBien }}
+ </td></tr>
+
+    <tr><td><strong>Prix        </strong></td><td>{{reserve.Bien.prix }}
+ </td></tr>
+    <tr><td><strong>Proprietaire           </strong></td><td>{{reserve.Bien.Proprietaire.Prenom}} {{reserve.Bien.Proprietaire.Nom}} </td></tr
+    >   <tr><td><strong>Localite         </strong></td><td>{{reserve.Bien.Localite.libelle }}
+ </td></tr>
+<tr><td><strong>Type         </strong></td><td>{{reserve.Bien.Type.libelle }}
+ </td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+    Montant d'allocation de bien
+</strong>
+            </td> <td>
+
+
+
+
+
+      {# Génération de l'input. #}
+
+      {{reserve.Bien.prix * 12}}
+
+
+
+ </td></tr>
+
+<tr><td> {# Génération du label. #}
+<strong>
+
+Commission
+</strong>
+            </td> <td>
+
+
+ {{reserve.Bien.prix * 3}}
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+Part du proprietaire
+</strong>
+            </td> <td>
+
+
+ {{reserve.Bien.prix * 9}}
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+Durée du contrat
+</strong>
+            </td> <td>
+1 année
+
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+<tr><td> {# Génération du label. #}
+<strong>
+Date de début
+</strong>
+            </td> <td>
+
+     {{date}}
+      
+
+
+
+      {# Génération de l'input. #}
+
+
+
+</td></tr>
+  </div>
+   {% endfor %}
+
+
+
+
+
+{{ form_start(form)}}
+           <tr><td> {# Génération du label. #}
+<strong>
+
+    <label>
+    Les termes du contrat
+    </label>
+</strong>
+            </td> <td>
+
+
+
+
+<textarea disabled="disabled" style="width:500px ; height:300px">
+{% for termes in terme %}
+    {{ termes.texte}}
+{% endfor %}
+</textarea>
+
+
+
+
+</td></tr>
+  <tr><td> </td><td>
+  <input  name="checkBox" id="oui" type="radio">Accepter
+  <input  name="checkBox" id="non" type="radio" style="margin-left:20px;">Refuser
+  </td></tr>
+            <tr><td>
+        </td><td><input class="btn btn-dark" type="submit" id="soumet" value="Enregistrer" />
+        </td></tr>
+        {{form_end(form)}}
+
+        </table>
+        </div>
+
+  {% endblock %}

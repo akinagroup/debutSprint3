@@ -1,0 +1,60 @@
+<?php
+
+namespace Akina\ImmobilierBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * search
+ *
+ * @ORM\Table(name="search")
+ * @ORM\Entity(repositoryClass="Akina\ImmobilierBundle\Repository\searchRepository")
+ */
+class search
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\Localite")
+     * @ORM\JoinColumn(nullable=false)
+     */
+
+    private $Localite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NomBien", type="string", length=30)
+     */
+    private $Prix;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Akina\ImmobilierBundle\Entity\TypeBien")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    
+private $Type;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function __toString(){
+return $this->id;
+    }
+}
+

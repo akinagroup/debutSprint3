@@ -1,0 +1,64 @@
+{% extends "::Layout/layout1.html.twig" %}
+ {% block form %}
+<div class="form-group list-group-item">
+<form action="{{path('search')}}" methode="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Prix</label>
+    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter un montant" name="prix">
+
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect1">Localité</label>
+    <select class="form-control" id="exampleSelect1" name="Localite">
+      <option value="">--Choisir une localité--</option>
+      {%for localite in Localite%}
+      <option value="{{localite.libelle}}">{{localite.libelle}}</option>{%endfor%}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleSelect2">Type</label>
+    <select class="form-control" id="exampleSelect2" name="Type">
+      <option>--Choisir un type--</option>
+      {%for type in Type%}<option value="{{type.libelle}}">{{type.libelle}}</option> {%endfor%}
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-dark" name="chercher">Rechercher</button>
+</form>
+
+</div>
+ {% endblock %}
+ {% block formu %}
+
+ {% endblock %}
+   {% block catalogue %}
+<div class="row-fluid">
+           <ul class="thumbnails">
+
+ {% for bien in reservations %}
+ 	<li class="span4">
+			  <div class="thumbnail">
+  
+				<a class="zoomTool" href="{{path('va',{'id':bien.id,'bien':bien.biens.id})}}" title="add to cart"><span class="icon-search"></span> Détails </a>
+				<a href="{{path('va',{'id':bien.id,'bien':bien.biens.id})}}"><img src="{{ asset('uploads/images/' ~ bien.image) }}" style="width:160px;height:120px"/></a>
+				<div class="caption cntr">
+					<p> {{bien.biens.NomBien}} </p>
+					<p><strong> {{bien.biens.Prix}} Fcfa</strong></p>
+					<h4><a class="shopBtn" href="{{path('Reserve',{'id':bien.biens.id})}}" title="add to cart"> Réserver </a></h4>
+					<div class="actionList">
+						<a class="pull-left" href="#">{{bien.biens.Type.Libelle}} </a>
+						<a class="pull-left" href="#">  {{bien.biens.Localite.Libelle}}</a>
+					</div>
+					<br class="clr">
+				</div>
+			  </div>
+			</li>
+
+
+   {% endfor %}
+
+</ul>
+	</div>
+          <!-- /.row -->
+           {% endblock %}

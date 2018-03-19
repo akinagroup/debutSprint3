@@ -1,0 +1,41 @@
+akina_immobilier_homepage:
+    path:     /
+    defaults: { _controller: AkinaImmobilierBundle:Default:index }
+
+akina_:
+    path:     /accueil
+    defaults: { _controller: AkinaImmobilierBundle:Front:list }
+
+Reserve:
+    path:     /reserve/{id}
+    defaults: { _controller: AkinaImmobilierBundle:Front:Reserve }
+
+search:
+    path:     /search
+    defaults: { _controller: AkinaImmobilierBundle:Front:search }
+
+Resultat:
+    path:     /resultat
+    defaults: { _controller: AkinaImmobilierBundle:Front:list }
+
+tes:
+    path:     /test
+    defaults: { _controller: AkinaImmobilierBundle:Front:test }
+
+valid:
+    path:     /con
+    defaults: { _controller: AkinaImmobilierBundle:Front:valide}
+
+va:
+    path:     /vvv/{id}/{bien}
+    defaults: { _controller: AkinaImmobilierBundle:Front:detail}
+
+
+admin:
+    resource: "@AkinaImmobilierBundle/Controller/AdminController.php"
+    type:     annotation
+
+post:
+    resource: "@AkinaImmobilierBundle/Controller/RestFullController.php"
+    type:     annotation
+
